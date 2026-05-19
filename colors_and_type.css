@@ -1,0 +1,265 @@
+/* =============================================================================
+   L'ADVISORY — colors_and_type.css
+   ----------------------------------------------------------------------------
+   The full type + color foundation for L'Appartement Gallery's L'Advisory
+   presentation system. Editorial, fine-art, print-first.
+
+   Two families do all the work:
+     Inter            — display + body (SIL OFL, free)
+     Ivy Mode         — ornamental quotation marks only
+
+   The palette is intentionally tiny: pure black on pure white, plus one
+   tonal beige for end-page chrome. Each presentation introduces ONE
+   accent color derived from the artwork — never picked arbitrarily.
+   ========================================================================= */
+
+/* ---- Fonts -------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Ivy Mode';
+  src: url('./fonts/IvyMode-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Inter is loaded from Google Fonts in HTML head:
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+*/
+
+:root {
+
+  /* ===========================================================
+     COLORS
+     =========================================================== */
+
+  /* Base — pure values, no tints */
+  --la-black:        #010101;   /* all body text, all titles */
+  --la-white:        #ffffff;   /* page background */
+  --la-cover-fb:     #d8d6d2;   /* fallback while cover image loads */
+  --la-beige:        #cec2ba;   /* end-page logo + disclaimer text */
+  --la-grey-caption: #888888;   /* exhibition-view caption only */
+
+  /* Semantic — map intent to base */
+  --color-fg:                 var(--la-black);
+  --color-bg:                 var(--la-white);
+  --color-fg-soft:            var(--la-beige);     /* disclaimer + end logo */
+  --color-fg-caption:         var(--la-grey-caption);
+  --color-cover-fallback:     var(--la-cover-fb);
+
+  /* Accent — INJECTED per presentation, derived from artwork tones.
+     Defaults below match the canonical cream of the Arp template. */
+  --accent-color:             #f6f2eb;   /* quote-page background */
+  --accent-text-color:        var(--la-black);
+
+  /* Pairing rule baked into vars so you can reference the right text
+     color from a single source of truth. Update both at once. */
+  --quote-bg:                 var(--accent-color);
+  --quote-fg:                 var(--accent-text-color);
+
+
+  /* ===========================================================
+     TYPE — families, weights, scale
+     =========================================================== */
+
+  --font-display:  'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-ornament: 'Ivy Mode', 'Times New Roman', serif;
+
+  --fw-light:    300;   /* artist FIRST name, body quote */
+  --fw-regular:  400;   /* body paragraphs */
+  --fw-medium:   500;   /* quote signature */
+  --fw-semibold: 600;   /* section headings, price line */
+  --fw-bold:     700;   /* artist FAMILY name */
+
+  /* Scale — points are the source of truth (print-first).
+     px values are the screen equivalents at 96dpi (1pt ≈ 1.333px). */
+  --t-quote-mark:    140pt;   /* Ivy Mode " on quote page */
+  --t-bio-name:       30pt;   /* artist lockup on biography page */
+  --t-cover-name:     26pt;   /* artist lockup on cover */
+  --t-quote-text:     34pt;   /* the quote itself */
+  --t-fiche-artist:   11pt;   /* artist line on commercial sheet */
+  --t-note:           10pt;   /* notes + biography body */
+  --t-bio:            10pt;
+  --t-fiche-title:   9.5pt;
+  --t-section-h:     9.5pt;   /* PROVENANCE / EXHIBITIONS / LITERATURE */
+  --t-fiche-meta:    9pt;
+  --t-fiche-price:   9pt;
+  --t-closeup-cap:   9pt;
+  --t-entry:         8.5pt;   /* provenance / exhibition / lit entries */
+  --t-disclaimer:    8.5pt;
+  --t-cover-work:    8.5pt;   /* work title under artist name on cover */
+  --t-ex-caption:    7.5pt;   /* exhibition-view caption */
+
+  /* Tracking */
+  --tr-tight:     -0.01em;     /* quote text */
+  --tr-display:    0.01em;     /* cover + bio lockup */
+  --tr-fiche:      0.02em;     /* fiche artist line */
+  --tr-fiche-tt:   0.05em;     /* fiche title-line */
+  --tr-caps-soft:  0.24em;     /* cover work title */
+  --tr-caps-hard:  0.30em;     /* section headings on detail page */
+  --tr-sig:        0.34em;     /* quote signature */
+
+  /* Leading */
+  --lh-quote-mark: 0.4;
+  --lh-quote:      1.25;
+  --lh-tight:      1.45;
+  --lh-fiche:      1.45;
+  --lh-detail:     1.55;
+  --lh-italic-cap: 1.55;
+  --lh-body:       1.65;
+  --lh-note:       1.7;
+  --lh-name:       1;
+
+  /* ===========================================================
+     LAYOUT — A4 + editorial rhythm
+     =========================================================== */
+  --page-w:        210mm;
+  --page-h:        297mm;
+  --page-margin:    12mm;         /* editorial margin baseline */
+  --page-margin-l:  16mm;         /* most pages use 14–18mm */
+  --inset-text:     25px;         /* text-wrap padding around objects */
+  --inset-name:     30px;         /* bio name lockup wrap padding */
+
+}
+
+/* =============================================================================
+   SEMANTIC TYPE RULES
+   ============================================================================= */
+
+html, body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Body paragraph — biography, notes, justified */
+.la-body {
+  font-family: var(--font-body);
+  font-size: var(--t-bio);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-fg);
+  text-align: justify;
+}
+.la-body p + p { margin-top: 4mm; }
+
+/* Notes page — slightly looser */
+.la-note {
+  font-family: var(--font-body);
+  font-size: var(--t-note);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-note);
+  color: var(--color-fg);
+  text-align: justify;
+}
+
+/* Section headings — PROVENANCE / EXHIBITIONS / LITERATURE */
+.la-section-h {
+  font-family: var(--font-display);
+  font-size: var(--t-section-h);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tr-caps-hard);
+  text-transform: uppercase;
+  color: var(--color-fg);
+}
+
+/* Detail entries — bold institution names via <strong> */
+.la-entry {
+  font-family: var(--font-body);
+  font-size: var(--t-entry);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-detail);
+  color: var(--color-fg);
+}
+.la-entry strong { font-weight: var(--fw-semibold); }
+
+/* Artist lockup — first (light) + family (bold) */
+.la-lockup {
+  font-family: var(--font-display);
+  letter-spacing: var(--tr-display);
+  line-height: var(--lh-name);
+  text-transform: uppercase;
+  color: var(--color-fg);
+}
+.la-lockup .first { font-weight: var(--fw-light); }
+.la-lockup .last  { font-weight: var(--fw-bold); }
+
+/* Quote — large light text, Ivy Mode marks */
+.la-quote-text {
+  font-family: var(--font-display);
+  font-size: var(--t-quote-text);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-quote);
+  letter-spacing: var(--tr-tight);
+  color: var(--quote-fg);
+  text-align: left;
+}
+.la-quote-mark {
+  font-family: var(--font-ornament);
+  font-size: var(--t-quote-mark);
+  line-height: var(--lh-quote-mark);
+  font-weight: var(--fw-regular);
+  color: var(--quote-fg);
+}
+.la-quote-sig {
+  font-family: var(--font-display);
+  font-size: 10pt;
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tr-sig);
+  text-transform: uppercase;
+  color: var(--quote-fg);
+  text-align: right;
+}
+
+/* Fiche — commercial sheet under the work */
+.la-fiche-artist {
+  font-family: var(--font-display);
+  font-size: var(--t-fiche-artist);
+  letter-spacing: var(--tr-fiche);
+  text-transform: uppercase;
+}
+.la-fiche-artist .first { font-weight: var(--fw-light); }
+.la-fiche-artist .last  { font-weight: var(--fw-bold); }
+
+.la-fiche-title {
+  font-family: var(--font-display);
+  font-size: var(--t-fiche-title);
+  letter-spacing: var(--tr-fiche-tt);
+  text-transform: uppercase;
+}
+.la-fiche-meta       { font-size: var(--t-fiche-meta); line-height: var(--lh-fiche); }
+.la-fiche-meta.italic{ font-style: italic; }
+.la-fiche-price      {
+  font-size: var(--t-fiche-price);
+  font-weight: var(--fw-semibold);
+}
+
+/* Closeup caption (italic) */
+.la-closeup-cap {
+  font-family: var(--font-body);
+  font-size: var(--t-closeup-cap);
+  font-style: italic;
+  line-height: var(--lh-italic-cap);
+  color: var(--color-fg);
+}
+
+/* Exhibition-view caption (grey, centered, small) */
+.la-ex-caption {
+  font-family: var(--font-body);
+  font-size: var(--t-ex-caption);
+  color: var(--color-fg-caption);
+  text-align: center;
+}
+
+/* Disclaimer */
+.la-disclaimer {
+  font-family: var(--font-body);
+  font-size: var(--t-disclaimer);
+  line-height: var(--lh-body);
+  color: var(--color-fg-soft);
+  text-align: center;
+}

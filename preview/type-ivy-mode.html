@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type — Ivy Mode</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 16px 24px 20px; box-sizing: border-box; }
+  .label {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: #8a847d; margin-bottom: 10px;
+  }
+  /* Quote-page recreation — olive accent, drop cap, paired marks, attribution. */
+  .panel {
+    background: #b6a974;
+    color: #010101;
+    padding: 38px 42px 30px;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  /* Open mark — top-left, modest size, sits ABOVE the text block */
+  .open-mark {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 60px;
+    line-height: 0.6;
+    position: absolute;
+    top: 38%;
+    left: 42px;
+  }
+
+  /* Quote body — Ivy Mode, with drop cap. Sits in the middle of the panel. */
+  .quote {
+    position: absolute;
+    top: 44%;
+    left: 84px;
+    right: 84px;
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: #010101;
+  }
+  .quote::first-letter {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 92px;
+    line-height: 0.85;
+    float: left;
+    padding-right: 8px;
+    padding-top: 4px;
+  }
+
+  /* Close mark — bottom-right, mirrors open mark, rotated. */
+  .close-mark {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 60px;
+    line-height: 0.6;
+    position: absolute;
+    bottom: 22%;
+    right: 42px;
+    transform: rotate(180deg);
+  }
+
+  /* Attribution — Inter caps, tracked, right-aligned, well below quote. */
+  .attrib {
+    position: absolute;
+    bottom: 26px;
+    right: 42px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #010101;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Ivy Mode — quote-page system (mark + drop cap + body + sig)</div>
+  <div class="panel">
+    <span class="open-mark">&ldquo;</span>
+    <div class="quote">This is the type of signifier I use to hide the traumatic image behind something entirely different, like a cactus or the carpet on the floor.</div>
+    <span class="close-mark">&ldquo;</span>
+    <div class="attrib">— Mohammed Sami</div>
+  </div>
+</div>
+</body>
+</html>

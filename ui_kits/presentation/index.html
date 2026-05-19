@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>L'Advisory — Jean Arp, Poupée Borgne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    color: #010101;
+    background: #ece8e0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* Screen scaffold — center each A4 page, leave breathing room */
+  .la-deck {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  /* Print: native A4 with page breaks between sections */
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    html, body { background: #fff; }
+    .la-deck { padding: 0; gap: 0; }
+    .la-page {
+      page-break-after: always;
+      box-shadow: none !important;
+    }
+    .la-page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Data -->
+<script src="data/sample.js"></script>
+<script src="data/logos.js"></script>
+
+<!-- Atoms -->
+<script type="text/babel" src="components/Page.jsx"></script>
+<script type="text/babel" src="components/Logo.jsx"></script>
+<script type="text/babel" src="components/Lockup.jsx"></script>
+
+<!-- Pages -->
+<script type="text/babel" src="pages/Cover.jsx"></script>
+<script type="text/babel" src="pages/Biography.jsx"></script>
+<script type="text/babel" src="pages/Quote.jsx"></script>
+<script type="text/babel" src="pages/Work.jsx"></script>
+<script type="text/babel" src="pages/Closeup.jsx"></script>
+<script type="text/babel" src="pages/Detail.jsx"></script>
+<script type="text/babel" src="pages/Notes.jsx"></script>
+<script type="text/babel" src="pages/End.jsx"></script>
+
+<!-- App -->
+<script type="text/babel" src="PresentationApp.jsx"></script>
+
+<script type="text/babel">
+  // Mount once Babel has transpiled and registered everything on window.
+  function mount() {
+    if (!window.PresentationApp) { requestAnimationFrame(mount); return; }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<PresentationApp data={window.LA_DATA} />);
+  }
+  mount();
+</script>
+</body>
+</html>

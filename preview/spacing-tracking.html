@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spacing — Tracking</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 22px 32px 26px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: 80px 1fr 150px; gap: 14px; padding: 9px 0; border-bottom: 1px solid #ece8e0; align-items: baseline; }
+  .row:last-child { border-bottom: none; }
+  .v { font-variant-numeric: tabular-nums; font-size: 11px; color: #5a5651; }
+  .s { font-size: 15px; text-transform: uppercase; font-weight: 500; }
+  .n { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: #8a847d; font-weight: 500; text-align: right; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row"><span class="v">-0.01em</span><span class="s" style="letter-spacing:-0.01em; text-transform:none; font-weight:300; font-size:18px">Form grows in man</span><span class="n">Tight · quote</span></div>
+  <div class="row"><span class="v">0.01em</span><span class="s" style="letter-spacing:0.01em">Jean Arp</span><span class="n">Display · lockups</span></div>
+  <div class="row"><span class="v">0.02em</span><span class="s" style="letter-spacing:0.02em">Jean Arp</span><span class="n">Fiche artist</span></div>
+  <div class="row"><span class="v">0.05em</span><span class="s" style="letter-spacing:0.05em">Poupée Borgne</span><span class="n">Fiche title</span></div>
+  <div class="row"><span class="v">0.05em</span><span class="s" style="letter-spacing:0.05em; font-size:11px">Poupée Borgne</span><span class="n">Cover work title</span></div>
+  <div class="row"><span class="v">0.05em</span><span class="s" style="letter-spacing:0.05em; font-weight:600; font-size:11px">Provenance</span><span class="n">Section heading</span></div>
+  <div class="row"><span class="v">0.05em</span><span class="s" style="letter-spacing:0.05em; font-weight:500; font-size:11px">— Jean Arp</span><span class="n">Quote signature</span></div>
+</div>
+</body>
+</html>

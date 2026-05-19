@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Palette — Base</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 28px 32px; box-sizing: border-box; }
+  .row  { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .sw   {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .chip {
+    height: 86px; width: 100%; box-sizing: border-box;
+  }
+  .chip.border { border: 1px solid #e6e3dd; }
+  .name  { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .hex   { font-size: 11px; color: #5a5651; font-variant-numeric: tabular-nums; }
+  .use   { font-size: 10.5px; color: #8a847d; line-height: 1.4; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="sw">
+      <div class="chip" style="background:#010101"></div>
+      <div class="name">Black</div>
+      <div class="hex">#010101</div>
+      <div class="use">All text, titles, lockups</div>
+    </div>
+    <div class="sw">
+      <div class="chip border" style="background:#ffffff"></div>
+      <div class="name">White</div>
+      <div class="hex">#FFFFFF</div>
+      <div class="use">Page background</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#d8d6d2"></div>
+      <div class="name">Cover Fallback</div>
+      <div class="hex">#D8D6D2</div>
+      <div class="use">Behind cover image</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#cec2ba"></div>
+      <div class="name">Beige</div>
+      <div class="hex">#CEC2BA</div>
+      <div class="use">End-page logo + disclaimer</div>
+    </div>
+    <div class="sw">
+      <div class="chip" style="background:#888888"></div>
+      <div class="name">Caption Grey</div>
+      <div class="hex">#888888</div>
+      <div class="use">Exhibition-view caption</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

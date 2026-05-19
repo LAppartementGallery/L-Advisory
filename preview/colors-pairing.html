@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pairing rules</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 28px 32px 32px; box-sizing: border-box; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .pair { padding: 28px 26px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; }
+  .pair.light { background: #ffffff; color: #010101; box-shadow: 0 0 0 1px #ece8e0; }
+  .pair.dark  { background: #010101; color: #ffffff; }
+  .pair .quote {
+    font-weight: 300; font-size: 22px; line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .pair .meta { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .pair .rule { font-size: 11px; opacity: 0.65; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid">
+    <div class="pair light">
+      <div class="quote">White ground → black text.</div>
+      <div>
+        <div class="meta">#FFFFFF / #010101</div>
+        <div class="rule">The default. All non-accent pages.</div>
+      </div>
+    </div>
+    <div class="pair dark">
+      <div class="quote">Black ground → white text.</div>
+      <div>
+        <div class="meta">#010101 / #FFFFFF</div>
+        <div class="rule">Used only when an accent is dark enough to read as black.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

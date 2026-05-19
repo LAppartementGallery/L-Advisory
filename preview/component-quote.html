@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Component — Quote</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 18px 24px 22px; box-sizing: border-box; }
+
+  /* Quote panel — white background, marks hug the text bounds tightly. */
+  .panel {
+    background: #ffffff;
+    color: #010101;
+    padding: 36px 40px 40px;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px #ece8e0;
+  }
+
+  /* Quote block — wider text column, justified with last line flush left. */
+  .quote-block {
+    position: relative;
+    margin: 20px 50px 0;
+  }
+
+  /* Open mark — bigger, tight to the text (top-left of block). */
+  .open-mark {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 180px;
+    line-height: 0.6;
+    position: absolute;
+    top: -28px;
+    left: -64px;
+  }
+
+  /* Quote body — Ivy Mode, justified with last line flush left. */
+  .quote-body {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+    color: #010101;
+    margin: 0;
+    text-align: justify;
+    text-align-last: left;
+  }
+  .quote-body::first-letter {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 130px;
+    line-height: 0.92;
+    float: left;
+    padding-right: 10px;
+    padding-top: 2px;
+    font-weight: 400;
+  }
+
+  /* Close mark — bigger, hugging the END of the text on the right. */
+  .close-mark {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-size: 180px;
+    line-height: 0.6;
+    position: absolute;
+    right: -64px;
+    bottom: -48px;
+    transform: rotate(180deg);
+  }
+
+  /* Signature — aligned to the right edge of the justified text column. */
+  .signature {
+    position: absolute;
+    right: 0;
+    bottom: -150px;
+    display: flex; align-items: baseline; gap: 6px;
+    text-transform: uppercase;
+    color: #010101;
+  }
+  .signature .dash { font-family: 'Inter', sans-serif; font-weight: 200; font-size: 14px; letter-spacing: 0.04em; margin-right: 6px; }
+  .signature .first { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; font-size: 14px; letter-spacing: 0.05em; }
+  .signature .last  { font-family: 'Ivy Mode', 'Times New Roman', serif;  font-weight: 400; font-size: 14px; letter-spacing: 0.01em; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="panel">
+    <div class="quote-block">
+      <span class="open-mark">&ldquo;</span>
+      <p class="quote-body">Art is a fruit that grows in man, like a fruit on a plant, or a child in its mother's womb.</p>
+      <span class="close-mark">&ldquo;</span>
+      <div class="signature">
+        <span class="dash">—</span><span class="first">Jean</span><span class="last">Arp</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type — Lockup primary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 26px 32px 28px; box-sizing: border-box; }
+  .label {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: #8a847d; margin-bottom: 10px;
+  }
+  .name {
+    font-size: 78px; line-height: 1; letter-spacing: 0.01em;
+    margin: 0 0 14px 0; text-transform: uppercase;
+    display: flex; align-items: baseline; gap: 18px;
+  }
+  /* JEAN — Helvetica Neue LT Pro 35 Thin. Substituted with Inter weight 100. */
+  .name .first {
+    font-family: 'Helvetica Neue', 'Helvetica', 'Inter', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.02em;
+  }
+  /* ARP — Ivy Mode Regular (high-contrast display serif). */
+  .name .last {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+  .desc {
+    font-size: 11.5px; line-height: 1.55; color: #4a4641; max-width: 600px;
+  }
+  .desc strong { font-weight: 600; color: #010101; }
+  .specs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid #ece8e0;
+  }
+  .spec { display: flex; flex-direction: column; gap: 4px; }
+  .spec .h { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #8a847d; font-weight: 500; }
+  .spec .v { font-size: 12px; }
+  .flag {
+    margin-top: 10px; font-size: 10.5px; color: #8a4d2b; line-height: 1.45;
+  }
+  .flag b { font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Artist lockup — two faces</div>
+  <div class="name">
+    <span class="first">Jean</span><span class="last">Arp</span>
+  </div>
+  <div class="desc">The brand lockup pairs <strong>Helvetica Neue LT Pro 35 Thin</strong> for the first name with <strong>Ivy Mode Regular</strong> for the family name. The cool, geometric thinness of Helvetica sits against the high-contrast serif of Ivy Mode — sans + serif, given equal weight.</div>
+  <div class="specs">
+    <div class="spec">
+      <div class="h">First name</div>
+      <div class="v">Helvetica Neue LT Pro 35 Thin · UPPERCASE · tracked +0.02em</div>
+    </div>
+    <div class="spec">
+      <div class="h">Family name</div>
+      <div class="v">Ivy Mode Regular · UPPERCASE · tracked +0.005em</div>
+    </div>
+  </div>
+  <div class="flag"><b>Font substitution flag:</b> Helvetica Neue LT Pro 35 Thin is not redistributable. Preview substitutes <code>Inter weight 100</code> via Google Fonts. Provide the licensed Helvetica Neue files to lock in the real specimen.</div>
+</div>
+</body>
+</html>

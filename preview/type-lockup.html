@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type — Lockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 22px 32px 26px; box-sizing: border-box; }
+  .label {
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: #8a847d; margin-bottom: 14px;
+  }
+  .stack { display: grid; grid-template-columns: 1.1fr 1.1fr 0.8fr; gap: 22px; align-items: end; }
+
+  /* Shared name styles */
+  .first {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #010101;
+    line-height: 1;
+  }
+  .last {
+    font-family: 'Ivy Mode', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: #010101;
+    line-height: 1;
+  }
+
+  /* Bio page — stacked, very large */
+  .bio  .first { font-size: 38px; display: block; }
+  .bio  .last  { font-size: 38px; display: block; text-align: right; margin-top: 8px; }
+
+  /* Cover page — stacked, right-aligned */
+  .cover .first { font-size: 30px; display: block; text-align: right; }
+  .cover .last  { font-size: 30px; display: block; text-align: right; margin-top: 6px; }
+
+  /* Fiche — inline, single line, small */
+  .fiche { display: flex; align-items: baseline; gap: 8px; }
+  .fiche .first { font-size: 16px; }
+  .fiche .last  { font-size: 16px; }
+
+  .caption {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8a847d;
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Artist lockup — Inter Thin + Ivy Mode, three sizes</div>
+  <div class="stack">
+    <div class="bio">
+      <span class="first">Mohammed</span>
+      <span class="last">Sami</span>
+      <div class="caption">Biography · stacked, large</div>
+    </div>
+    <div class="cover">
+      <span class="first">Mohammed</span>
+      <span class="last">Sami</span>
+      <div class="caption">Cover · stacked, right-aligned</div>
+    </div>
+    <div class="fiche-wrap">
+      <div class="fiche">
+        <span class="first">Mohammed</span>
+        <span class="last">Sami</span>
+      </div>
+      <div class="caption">Fiche · inline</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

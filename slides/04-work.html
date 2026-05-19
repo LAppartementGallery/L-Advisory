@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+  L'Advisory slide template — WORK + commercial fiche (page 4).
+
+  IMPORTANT — full-bleed variant:
+  In general the work page has the L'Appartement mark top-left (the work image
+  sits centered on a white page with breathing room around it). This template
+  shows the EXCEPTION case: a full-bleed image (artwork already on a
+  presentation-ready ground), where the page becomes the image and the
+  L'Appartement mark is OMITTED to avoid sitting on top of the artwork.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Work — Poupée Borgne</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  html, body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    color: #010101; background: #ece8e0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body { display: flex; justify-content: center; padding: 0; }
+
+  .page {
+    width: 210mm; height: 297mm;
+    position: relative; overflow: hidden;
+    background: #d8d6d2;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  /* Full-bleed work image — covers the entire page. */
+  .image img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  /* Fiche — bottom-right overlay, system typography. */
+  .fiche {
+    position: absolute;
+    bottom: 18mm; right: 18mm;
+    color: #010101;
+    z-index: 2;
+    text-align: left;
+  }
+  .fiche .artist {
+    display: flex; align-items: baseline; gap: 2.4mm;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    font-size: 16pt;
+  }
+  .fiche .artist .first { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; }
+  .fiche .artist .last  { font-family: 'Ivy Mode', 'Times New Roman', serif;  font-weight: 400; letter-spacing: 0.005em; }
+
+  .fiche .info {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 11pt;
+    line-height: 1.45;
+    margin-top: 3mm;
+  }
+  .fiche .info .line { display: block; }
+  .fiche .info .block-gap { margin-top: 4mm; }
+
+  .fiche .price {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 11pt;
+    margin-top: 5mm;
+    letter-spacing: -0.005em;
+  }
+  .fiche .price .currency {
+    font-size: 0.6em; vertical-align: super; font-weight: 500;
+    margin-left: 1mm; letter-spacing: 0.04em;
+  }
+
+  @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; } }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="image">
+    <img src="../sample/jean-arp/work-main.jpeg" alt="Jean Arp, Poupée Borgne">
+  </div>
+  <div class="fiche">
+    <div class="artist"><span class="first">Jean</span><span class="last">Arp</span></div>
+    <div class="info">
+      <span class="line">Poupée Borgne, 1963</span>
+      <span class="line block-gap">Black granite</span>
+      <span class="line">Height 95.3 cm</span>
+      <span class="line">37 ½ in</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

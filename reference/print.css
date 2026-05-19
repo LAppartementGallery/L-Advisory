@@ -1,0 +1,314 @@
+/* =============================================================================
+   L'ADVISORY DESIGN SYSTEM — Print stylesheet
+   =============================================================================
+   This stylesheet drives every A4 presentation produced for L'Appartement Gallery.
+   Hierarchy is achieved through TYPE + SPACE + COLOR only — never via decoration.
+   Variables to inject per presentation:
+     --accent-color        background of the quote page
+     --accent-text-color   text color on the accent background
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Ivy Mode';
+  src: url('__IVY_FONT_DATA_URI__') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  color: #010101;
+  background: #ffffff;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+.page {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background: #ffffff;
+}
+.page:last-child { page-break-after: auto; }
+
+/* =============================================================================
+   PAGE 1 — COVER
+   ========================================================================== */
+.cover { background: #d8d6d2; }
+
+.cover-img-wrap { position: absolute; inset: 0; }
+.cover-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center center;
+}
+
+.cover-logo {
+  position: absolute;
+  top: 16mm; left: 0; right: 0;
+  display: flex; justify-content: center;
+  z-index: 2;
+}
+.cover-logo svg { width: 70mm; height: auto; }
+
+.cover-artist {
+  position: absolute;
+  bottom: 24mm; right: 22mm;
+  text-align: right;
+  z-index: 2;
+  color: #010101;
+}
+.cover-artist .first {
+  font-weight: 300; font-size: 26pt;
+  letter-spacing: 0.01em; line-height: 1;
+  text-transform: uppercase;
+}
+.cover-artist .last {
+  font-weight: 700; font-size: 26pt;
+  letter-spacing: 0.01em; line-height: 1;
+  text-transform: uppercase;
+  margin-top: 0.5mm;
+}
+.cover-artist .work {
+  font-weight: 400; font-size: 8.5pt;
+  letter-spacing: 0.24em;
+  margin-top: 5mm;
+  text-transform: uppercase;
+}
+
+/* =============================================================================
+   PAGE 2 — BIOGRAPHY
+   ========================================================================== */
+.bio { padding: 14mm 16mm 16mm 16mm; }
+
+.bio-header svg {
+  width: 40mm; height: auto;
+  display: block;
+}
+
+.bio-body {
+  margin-top: 8mm;
+  font-size: 10pt; line-height: 1.65;
+  text-align: justify;
+  color: #010101;
+}
+.bio-body p { margin-bottom: 4mm; }
+
+.bio-floatbox {
+  float: left;
+  width: 72mm;
+  margin: 1mm 7mm 4mm 0;
+  shape-outside: margin-box;
+}
+.bio-floatbox .name {
+  font-size: 30pt;
+  letter-spacing: 0.01em; line-height: 1;
+  margin-bottom: 7mm;
+  text-transform: uppercase;
+  color: #010101;
+}
+.bio-floatbox .name .first { font-weight: 300; }
+.bio-floatbox .name .last  { font-weight: 700; margin-left: 2mm; }
+
+.bio-floatbox img {
+  display: block;
+  width: 100%; height: auto;
+  object-fit: cover;
+}
+
+/* =============================================================================
+   PAGE 3 — QUOTE
+   ========================================================================== */
+.quote {
+  background: var(--accent-color, #f6f2eb);
+  color: var(--accent-text-color, #010101);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40mm 28mm;
+}
+.quote-wrap {
+  position: relative;
+  max-width: 160mm;
+  padding: 0 14mm;
+}
+.quote-mark {
+  font-family: 'Ivy Mode', 'Times New Roman', serif;
+  font-size: 140pt;
+  color: inherit;
+  line-height: 0.4;
+  position: absolute;
+  font-weight: 400;
+}
+.quote-mark.open  { top: 6mm;  left: -6mm; }
+.quote-mark.close { bottom: 14mm; right: -6mm; transform: rotate(180deg); }
+.quote-text {
+  font-weight: 300;
+  font-size: 34pt; line-height: 1.25;
+  color: inherit;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+.quote-sig {
+  margin-top: 32mm;
+  font-weight: 500;
+  font-size: 10pt;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: inherit;
+  text-align: right;
+  width: 160mm;
+}
+
+/* =============================================================================
+   PAGE 4 — WORK + COMMERCIAL SHEET
+   ========================================================================== */
+.work-page { padding: 14mm 16mm; position: relative; }
+
+.work-header { position: absolute; top: 14mm; left: 16mm; }
+.work-header svg { width: 40mm; height: auto; display: block; }
+
+.work-image {
+  position: absolute;
+  top: 28mm; left: 50%;
+  transform: translateX(-50%);
+  height: 215mm;
+  display: flex;
+  align-items: flex-start; justify-content: center;
+}
+.work-image img {
+  height: 100%; width: auto;
+  object-fit: contain;
+}
+.work-fiche {
+  position: absolute;
+  bottom: 22mm; right: 22mm;
+  text-align: left;
+  font-size: 9pt; line-height: 1.45;
+  color: #010101;
+}
+.work-fiche .artist-line {
+  font-size: 11pt;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 1.2mm;
+}
+.work-fiche .artist-line .first { font-weight: 300; }
+.work-fiche .artist-line .last  { font-weight: 700; }
+.work-fiche .title-line {
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5mm;
+}
+.work-fiche .meta-line { font-size: 8.5pt; margin-bottom: 0.3mm; }
+.work-fiche .meta-line.italic { font-style: italic; }
+.work-fiche .price-line {
+  font-size: 9pt;
+  font-weight: 600;
+  margin-top: 4mm;
+}
+
+/* =============================================================================
+   PAGE 5 — CLOSE-UP / DESCRIPTION
+   ========================================================================== */
+.closeup { padding: 14mm 16mm; position: relative; }
+
+.closeup-image {
+  position: absolute;
+  top: 14mm; left: 50%;
+  transform: translateX(-50%);
+  height: 225mm;
+}
+.closeup-image img {
+  height: 100%; width: auto;
+  object-fit: contain;
+}
+.closeup-text {
+  position: absolute;
+  bottom: 26mm; right: 22mm;
+  width: 70mm;
+  font-size: 9pt;
+  font-style: italic;
+  line-height: 1.55;
+  color: #010101;
+  text-align: left;
+}
+
+/* Variant: exhibition view */
+.exhibition-view-caption {
+  position: absolute;
+  bottom: 14mm; left: 50%;
+  transform: translateX(-50%);
+  font-size: 7.5pt;
+  color: #888888;
+  text-align: center;
+  max-width: 160mm;
+}
+
+/* =============================================================================
+   PAGE 6 — PROVENANCE / EXHIBITIONS / LITERATURE
+   ========================================================================== */
+.detail-page { padding: 18mm 18mm; color: #010101; }
+
+.detail-page h2 {
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+  margin-top: 8mm;
+}
+.detail-page h2:first-child { margin-top: 0; }
+
+.detail-page .entry {
+  font-size: 8.5pt;
+  line-height: 1.55;
+  margin-bottom: 1.8mm;
+  text-align: left;
+}
+.detail-page .entry strong { font-weight: 600; }
+
+/* =============================================================================
+   PAGE 7 — NOTE ON WORK
+   ========================================================================== */
+.note-page { padding: 24mm 24mm; color: #010101; }
+
+.note-page p {
+  font-size: 10pt;
+  line-height: 1.7;
+  margin-bottom: 4mm;
+  text-align: justify;
+}
+
+/* =============================================================================
+   PAGE 8 — END / DISCLAIMER
+   ========================================================================== */
+.end-page {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40mm 30mm;
+  text-align: center;
+}
+.end-page .end-logo { margin-bottom: 22mm; }
+.end-page .end-logo svg { width: 80mm; height: auto; }
+.end-page .disclaimer {
+  font-size: 8.5pt;
+  line-height: 1.65;
+  color: #cec2ba;
+  max-width: 140mm;
+  text-align: center;
+}

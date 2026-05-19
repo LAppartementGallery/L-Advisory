@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- L'Advisory slide template — END page (last page, L'Advisory beige + disclaimer). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>End</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  html, body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    color: #010101; background: #ece8e0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body { display: flex; justify-content: center; padding: 24px; }
+  .page {
+    width: 210mm; height: 297mm; position: relative; overflow: hidden;
+    background: #fff;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 40mm 30mm; text-align: center;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .logo { margin-bottom: 22mm; }
+  .logo img { width: 130mm; height: auto; display: block; }
+  .disclaimer {
+    font-size: 8.5pt; line-height: 1.65; color: #cec2ba;
+    max-width: 140mm; text-align: center; margin: 0;
+  }
+  @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; } }
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="logo">
+    <img src="../assets/logos/ladvisory-beige.svg" alt="L'Advisory">
+  </div>
+  <p class="disclaimer">The artworks presented in this presentation are not owned by L&rsquo;Appartement &ndash; Gallery &amp; Advisory. The gallery does not hold exclusivity over them; this selection of artworks is sourced from a third party, including private collections and other professional art entities.</p>
+</section>
+</body>
+</html>

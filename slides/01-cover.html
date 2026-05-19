@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+  L'Advisory slide template — COVER (page 1 of the canonical sequence).
+  Full-bleed image. Logo top-center, large. Artist name + title large overlay.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover — Jean Arp, Poupée Borgne</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: url('../fonts/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400; font-style: normal;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  html, body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    color: #010101; background: #ece8e0;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body { display: flex; justify-content: center; align-items: flex-start; padding: 0; }
+
+  .page {
+    width: 210mm; height: 297mm;
+    position: relative; overflow: hidden;
+    background: #d8d6d2;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  /* Image — full bleed, covers the entire page. */
+  .page img.bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  /* L'Advisory mark — sized to fit comfortably above the sculpture's head,
+     without overlap. The Arp cover has limited grey space at top, so we
+     keep the logo modest and snug to the top edge. */
+  .logo-wrap {
+    position: absolute;
+    top: 6mm; left: 0; right: 0;
+    display: flex; justify-content: center;
+    z-index: 2;
+  }
+  .logo-wrap img { width: 75mm; height: auto; display: block; }
+
+  /* Artist + title — overlay near the bottom (Arp baseline; for darker
+     covers the same lockup runs at the top in white). Big, prominent. */
+  .lockup {
+    position: absolute;
+    bottom: 24mm; left: 12mm; right: 12mm;
+    z-index: 2;
+    color: #010101;
+    display: flex; flex-direction: column; align-items: flex-end;
+  }
+  .name {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 38pt;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .name .first { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; }
+  .name .last  { font-family: 'Ivy Mode', 'Times New Roman', serif;  font-weight: 400; letter-spacing: 0.005em; }
+  .title {
+    margin-top: 5mm;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 14pt;
+    letter-spacing: 0.01em;
+  }
+
+  @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; } }
+</style>
+</head>
+<body>
+<section class="page">
+  <img class="bg" src="../sample/jean-arp/cover.jpeg" alt="">
+  <div class="logo-wrap">
+    <img src="../assets/logos/ladvisory.svg" alt="L'Advisory">
+  </div>
+  <div class="lockup">
+    <div class="name">
+      <span class="first">Jean</span><span class="last">Arp</span>
+    </div>
+    <div class="title">Poupée Borgne, 1963</div>
+  </div>
+</section>
+</body>
+</html>

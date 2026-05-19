@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page sequence</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 22px 32px 26px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 12px; }
+  .p { aspect-ratio: 210/297; background:#fff; box-shadow: 0 0 0 1px #ece8e0; position: relative; display: flex; flex-direction: column; }
+  .p .num { position:absolute; top:4px; left:5px; font-size:8px; color:#bbb; font-variant-numeric: tabular-nums; letter-spacing:0.06em; font-weight:600; }
+  .p .nm  { position:absolute; bottom:6px; left:5px; right:5px; font-size:7.5px; letter-spacing:0.14em; text-transform: uppercase; color:#8a847d; font-weight:500; line-height: 1.2; }
+  /* Stylized previews */
+  .cover { background: linear-gradient(180deg, #b4ada4, #8e8579); }
+  .cover::before { content:""; position:absolute; top:6px; left:50%; transform: translateX(-50%); width:24px; height:5px; background:#010101; }
+  .cover .lock { position:absolute; bottom:18px; right:6px; text-align:right; font-size:5.5px; line-height:1; color:#010101; }
+  .cover .lock b { display:block; font-weight:700; letter-spacing:0.05em; }
+  .cover .lock i { display:block; font-weight:300; letter-spacing:0.05em; font-style: normal; }
+
+  .bio  { padding: 8px 5px 0; }
+  .bio .hdr { width: 18px; height: 3px; background:#010101; margin-bottom: 4px; }
+  .bio .name { font-size: 7px; line-height: 1; letter-spacing:0.04em; text-transform: uppercase; }
+  .bio .name b { font-weight:700; }
+  .bio .portrait { float:left; width: 28px; height: 30px; background:#cfc7bd; margin: 2px 3px 0 0; }
+  .bio .copy { font-size: 3.5px; line-height: 1.4; color: #555; text-align: justify; }
+
+  .quote { background: #f6f2eb; padding: 6px; }
+  .quote::before { content:"\201C"; position: absolute; top: 8px; left: 8px; font-family:'Times New Roman',serif; font-size:34px; line-height: 0.4; color:#010101; }
+  .quote::after  { content:"\201C"; position: absolute; bottom: 18px; right: 8px; font-family:'Times New Roman',serif; font-size:34px; line-height: 0.4; color:#010101; transform: rotate(180deg); }
+  .quote .qq { position:absolute; inset:24px 14px 30px 12px; font-size: 6px; line-height: 1.3; font-weight: 300; color:#010101; }
+
+  .work { display:flex; align-items:center; justify-content:center; padding-top: 8px; }
+  .work::before { content:""; position:absolute; top:6px; left:6px; width:18px; height:3px; background:#010101; }
+  .work .obj { width: 22px; height: 80px; background: linear-gradient(180deg,#52453a 0%, #3a2f29 100%); border-radius: 50% / 8%; box-shadow: 0 1px 0 #ccc; align-self: center; margin-top: 4px; }
+  .work .ficheblk { position:absolute; bottom:8px; right:5px; text-align:left; font-size: 4px; line-height: 1.2; }
+  .work .ficheblk b { display:block; font-weight:700; letter-spacing:0.04em; text-transform: uppercase; }
+  .work .ficheblk i { display:block; font-style: italic; color:#222; }
+
+  .closeup { background: #efe9df; }
+  .closeup .blob { position: absolute; inset: 8px; background: radial-gradient(closest-side at 35% 40%, #2c2520 0 30%, transparent 32%), radial-gradient(closest-side at 60% 55%, #3a2f29 0 35%, transparent 38%); }
+  .closeup .cap { position:absolute; bottom: 7px; right: 6px; width: 30px; font-size: 3.5px; font-style: italic; line-height: 1.3; color:#222; }
+
+  .detail { padding: 6px 5px; font-size: 4px; line-height: 1.4; color: #222; }
+  .detail h { display:block; font-weight:600; letter-spacing:0.18em; text-transform: uppercase; font-size: 4.5px; margin-top: 4px; }
+  .detail h:first-child { margin-top: 0; }
+
+  .notes  { padding: 8px 6px; font-size: 4px; line-height: 1.4; color: #222; text-align: justify; }
+
+  .end { display:flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; gap: 6px; }
+  .end .logo { width: 30px; height: 8px; background:#cec2ba; -webkit-mask: linear-gradient(#000,#000); }
+  .end .disc { font-size: 3.5px; color:#cec2ba; line-height: 1.4; text-align: center; max-width: 60px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="p cover"><span class="num">01</span><span class="lock"><i>Jean</i><b>ARP</b></span><span class="nm">Cover</span></div>
+    <div class="p bio"><span class="num">02</span><div class="hdr"></div><div class="portrait"></div><div class="name"><span>Jean</span> <b>Arp</b></div><div class="copy">Jean Arp (1886–1966) was a pioneering French-German artist whose work played a central role in the development of Dada and Surrealism, founding member of the Dada movement.</div><span class="nm">Biography</span></div>
+    <div class="p quote"><span class="num">03</span><div class="qq">Art is a fruit that grows in man, like a fruit on a plant.</div><span class="nm">Quote</span></div>
+    <div class="p work"><span class="num">04</span><div class="obj"></div><div class="ficheblk"><b>Jean Arp</b><span>Poupée Borgne</span><i>1963</i><i>Black granite</i></div><span class="nm">Work + fiche</span></div>
+    <div class="p closeup"><span class="num">05</span><div class="blob"></div><div class="cap">The present work is the only unique stone version.</div><span class="nm">Close-up</span></div>
+    <div class="p detail"><span class="num">06</span><h>Provenance</h><div>Gallery, Basel</div><div>Sidney Janis Gallery</div><h>Exhibitions</h><div>Hans Arp, 1966</div><h>Literature</h><div>H. Read, 1968</div><span class="nm">Detail</span></div>
+    <div class="p notes"><span class="num">07</span><div><em>Poupée borgne</em> was conceived in 1963 and executed around 1966 in black granite. The sculpture belongs to the artist's late body of work.</div><span class="nm">Notes</span></div>
+    <div class="p end"><span class="num">08</span><div class="logo"></div><div class="disc">The artworks presented are not owned by L'Appartement Gallery &amp; Advisory.</div><span class="nm">End</span></div>
+  </div>
+</div>
+</body>
+</html>

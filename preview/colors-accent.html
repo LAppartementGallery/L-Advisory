@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accent palette</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #fafaf8; font-family: 'Inter', system-ui, sans-serif; color: #010101; }
+  .card { width: 700px; padding: 26px 32px 30px; box-sizing: border-box; }
+  .lead {
+    font-size: 11.5px; line-height: 1.55; color: #4a4641; max-width: 560px;
+    margin: 0 0 18px 0;
+  }
+  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .acc  { aspect-ratio: 1 / 1.05; padding: 10px 11px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+  .lab  { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+  .hex  { font-size: 10px; font-variant-numeric: tabular-nums; }
+  .note { font-size: 11px; color: #8a847d; margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <p class="lead">Accent color is injected per presentation, derived from the dominant tones of the artwork and desaturated 15–25%. It appears on the quote page only. Light accents pair with black text; dark accents pair with cream text.</p>
+  <div class="grid">
+    <div class="acc" style="background:#f6f2eb; color:#010101"><span class="lab">Cream</span><span class="hex">#F6F2EB</span></div>
+    <div class="acc" style="background:#e8dccd; color:#010101"><span class="lab">Sand</span><span class="hex">#E8DCCD</span></div>
+    <div class="acc" style="background:#cdb89a; color:#010101"><span class="lab">Camel</span><span class="hex">#CDB89A</span></div>
+    <div class="acc" style="background:#7d8b7a; color:#f5f1ea"><span class="lab">Sage</span><span class="hex">#7D8B7A</span></div>
+    <div class="acc" style="background:#4e524b; color:#f5f1ea"><span class="lab">Slate</span><span class="hex">#4E524B</span></div>
+    <div class="acc" style="background:#3a2f29; color:#f5f1ea"><span class="lab">Espresso</span><span class="hex">#3A2F29</span></div>
+  </div>
+  <p class="note">Examples only. Sample from the artwork itself — never invent.</p>
+</div>
+</body>
+</html>
