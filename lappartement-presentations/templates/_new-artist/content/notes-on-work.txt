@@ -1,0 +1,10 @@
+Replace this file with the curatorial / scholarly notes on the work.
+
+Typically 2 to 4 paragraphs in English, justified prose, mentioning:
+- when the work was conceived / executed
+- its place in the artist's career
+- key formal or symbolic features
+- sources or institutional context
+
+Use *italics* around work titles in body text. The build pipeline converts
+*single asterisks* to <em>...</em> automatically.

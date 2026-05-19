@@ -1,0 +1,55 @@
+# =============================================================================
+# L'ADVISORY PRESENTATION CONFIG
+# =============================================================================
+# This file drives the build for one presentation. Edit values here, then run:
+#   python system/scripts/build.py artists/jean-arp-poupee-borgne
+#
+# Asset paths are relative to this config file (the artist directory).
+# Content paths point to .txt files in content/.
+# =============================================================================
+
+# --- ARTIST ------------------------------------------------------------------
+artist:
+  first_name: "Jean"
+  family_name: "Arp"
+  portrait: "assets/artist-portrait.png"
+  bio_file: "content/biography.txt"
+  quote_file: "content/quote.txt"
+  quote_author: "Jean Arp"   # how the signature appears under the quote
+
+# --- COVER -------------------------------------------------------------------
+cover:
+  image: "assets/cover.jpeg"
+  # Optional override of artist label color on cover (defaults to black).
+  text_color: "#010101"
+
+# --- ACCENT (drives the quote page) ------------------------------------------
+# Derive these from the dominant tones of the artwork. For Arp the work is
+# a near-monochrome dark-granite sculpture on a neutral grey ground, so we
+# keep the canonical cream from the template.
+accent:
+  color: "#f6f2eb"           # background of the quote page
+  text_color: "#010101"      # text/quote-marks on that background
+
+# --- WORK(S) -----------------------------------------------------------------
+# A list. For a single-work presentation, leave just one entry.
+# For multi-work, add more entries; each one generates its own page A + page B.
+works:
+  - title: "Poupée Borgne"
+    year: "Conceived 1963; executed c. 1966"
+    medium: "Black granite"
+    dimensions_cm: "Height 95.3 cm"
+    dimensions_in: "37 ½ in"
+    price: null               # null = no price line. Otherwise "430,200 USD" etc.
+    image_main: "assets/work-main.jpeg"
+    image_closeup: "assets/work-closeup.jpeg"
+    closeup_caption_file: "content/closeup-caption.txt"
+    # Provenance / exhibitions / literature blocks, used on the detail page.
+    provenance_file: "content/provenance.txt"
+    exhibitions_file: "content/exhibitions.txt"
+    literature_file: "content/literature.txt"
+    notes_file: "content/notes-on-work.txt"
+
+# --- OUTPUT ------------------------------------------------------------------
+output:
+  filename: "jean-arp-poupee-borgne"   # used for both .html and .pdf

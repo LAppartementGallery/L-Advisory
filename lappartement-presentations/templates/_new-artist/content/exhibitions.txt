@@ -1,0 +1,4 @@
+One exhibition per line. Use *asterisks* around the exhibition title to italicise it.
+
+Example:
+City, Institution Name, *Exhibition Title*, Year, no. X, p. XX, illustrated.

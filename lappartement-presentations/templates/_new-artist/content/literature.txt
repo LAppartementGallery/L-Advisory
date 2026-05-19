@@ -1,0 +1,4 @@
+One literature reference per line. Use *asterisks* around the book title to italicise it.
+
+Example:
+Author Name, *Book Title*, City, Year, no. X, p. XX, illustrated.

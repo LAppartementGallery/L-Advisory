@@ -1,0 +1,7 @@
+Replace this file with the artist biography.
+
+3 to 4 paragraphs, in English. Separate paragraphs with a blank line.
+
+The first paragraph should ideally start with: "FirstName LastName (YYYY–YYYY),
+also known as ..., was a ..." — the build pipeline auto-bolds that opening
+phrase.

@@ -1,0 +1,186 @@
+PROMPT CLAUDE DESIGN — Presentation Artist L'Advisory
+========================================================
+
+ROLE
+Tu es designer éditorial pour L'Appartement Gallery (Genève). Tu produis
+une présentation PDF A4 vertical pour UN artiste: example "Jean Arp". Le design
+system L'Advisory (typographies, logo, palette de base, échelles) est
+déjà preset — invoque-le, ne le redéfinis pas.
+
+OBJECTIF
+Générer un document A4 vertical, multi-pages, en HTML print-ready (export
+PDF propre via @page A4), suivant la séquence canonique ci-dessous.
+Esthétique : éditorial, fine art, clean, dense quand le contenu l'exige,
+spacieux sinon. Aucun élément décoratif gratuit.
+
+────────────────────────────────────────────────────
+RÈGLES GLOBALES
+────────────────────────────────────────────────────
+
+COULEURS
+- Couleur d'accent (`accent_color`) : fil rouge identitaire de l'oeuvre,
+  variable. Dérivée des tonalités dominantes des œuvres exposées.
+- Texte sur fond blanc pur : TOUJOURS noir.
+- Texte sur fond accent : blanc crème/teinté, proche du blanc pur ou noir. Subtilement modulé par l'accent (ex : accent foncé → off white ; accent clair → noir).
+- Titre de la bio (nom de l'artiste): Noir
+
+TYPOGRAPHIE
+- Display sans serif : Inter Display (preset L'Appartement, SIL OFL libre) ou Helvetica Neue LT Pro.
+  Pour : titres, nom de famille de l'artiste (en capitales, lettrage tracké).
+  Substitut libre de Avenir Next, géométrique aux ouvertures normal.
+- Sans-serif corps : Inter (preset L'Appartement, SIL OFL libre).
+  Pour : tous les corps de texte, fiches commerciales, provenance, légendes.
+  Substitut libre de Helvetica Neue LT Pro, même famille que le display pour cohérence.
+- Les @font-face sont déclarés dans system/fonts/fonts.css et chargés par
+  system/brand/tokens.css. N'utilise jamais Forma DJR ou Helvetica directement,
+  les licences Adobe ne sont pas redistribuables.
+- Hiérarchie via taille + graisse + espacement, jamais via boîtes ou
+  bordures décoratives.
+
+GRILLE & MISE EN PAGE
+- A4 vertical (210 × 297 mm).
+- Marges généreuses, éditoriales (≈ 12 mm).
+- Texte courant : justifié ave la dernière ligne à gauche, drapeau gauche autorisé pour titres et légendes.
+- Pas de numéro de page, pas de pied, seulement en-tête courant avec logo L'Appartement sur la page de la biography et de la page de l'oeuvre.
+- Aucun logo récurrent en pied — le logo L'Adisory n'apparaît qu'en
+  page de fin et L'Appartement sur la page de la biography et de la page de l'oeuvre.
+- Texte/ Titre en habillage autour de l’objet (qui est le texte principale) avec une marge intérieure comprise de 25 px.
+
+IMAGES D'ŒUVRE
+- Cropper proprement : retirer le background photo, ce qui comprend un fond gris / fonds perdus seulement pour les oeuvres a plat. Pour les sculptures, prendre toute lîmage et créer un fond neutre.
+- Conserver le cadre s'il fait partie de l'œuvre.
+- Centrer dans la page.
+- ÉCHELLE PROPORTIONNELLE entre œuvres d'une même fact-sheet : une œuvre
+  de 200×150 cm doit visuellement légèrement dominer une œuvre de 30×40 cm sur leurs
+  pages respectives entre 10px - 30 px. Ne pas remplir la page systématiquement. Pour des
+  miniatures (ex: 5×5 cm), réduire raisonnablement sans tomber dans le
+  timbre-poste.
+- Couverture : détail d'œuvre en full bleed, mais le crop ne doit JAMAIS
+  dénaturer l'œuvre (pas de cadrage qui détruit la lecture du motif).
+
+────────────────────────────────────────────────────
+SÉQUENCE CANONIQUE (figée)
+────────────────────────────────────────────────────
+
+PAGE 1 — COUVERTURE
+- Détail d'œuvre en arrière-plan, full bleed (sans dénaturer). Si sculpture, prendre l'oeuvre entière.
+- Logo L'Advisory en noir ou blanc centré en haut de page.
+- Nom Artist : display sans serif, centré à gauche ou à droite en bas, dépends de l'œuvre.
+- Nom œuvre : sous le nom de l'artist en plus petit, pas trop sérré du nom
+- aucune adresse
+
+PAGE 2 — BIOGRAPHIE ARTISTE
+- Logo L'Appartement en petit en haut de page à gauche
+- Nom de famille en display sans serif, capitales trackées, à GAUCHE
+  (toujours à gauche).
+- Prénom au-dessus ou à côté, tonalité plus discrète, all capital.
+- Prénom et Nom en habillage autour de l’objet (qui est le texte principale) avec une marge intérieure comprise à 30px.
+- Couleur du nom : noir
+- Portrait de l'artiste à gauche, texte bio à droite (multi-paragraphes,
+  justifié), en habillage autour de l’objet (qui est le texte principale) avec une marge intérieure comprise à 25 px.
+
+PAGE 3 — CITATION ARTISTE
+- Fond plein `accent_color`.
+- Texte couleur toujours en contrast avec le fond (`accent_text_color`). Prendre les accent de l'œuvre.
+- Guillemets ouvrants gros, en haut à gauche ; fermants gros, en bas à
+  droite du texte et avec des espacements de 25px.
+- Citation centrée verticalement, large, aérée.
+- Signature artiste en capitales sous la citation légèrement plus en bas (aéré l'espace), alignée précisément à droite du texte.
+
+CYCLE ŒUVRE (répétable autant que d'œuvres dans la presentation)
+  PAGE A — ŒUVRE + FICHE COMMERCIALE
+    - Œuvre centrée, à l'échelle proportionnelle, fond blanc pur.
+    - Sous l'œuvre, bloc fiche centré à l'image ou l'œuvre si sculpture, sans bordure :
+        Nom Artiste
+        Titre, Année
+        Medium
+        Dimensions en cm
+        Dimensions en inches
+        [2 lignes vides]
+        Price (excl. VAT): XX'XXX USD     ← légèrement en gras et si seulement il y a.
+
+  PAGE B — CLOSE-UP ou EXHIBITION VIEW
+   - CLOSE UP: Détail haute résolution de la même œuvre, full bleed ou très
+      large, met en valeur la matière/texture, parfois du texte en italic.
+
+   - EXHIBITION VIEW: Photo de la vue de l'exposition, centre de l'image, large. Text en bas petit et en gris. "Exhibition view, "Nom de l'exposition", nom gallery ou institution, nom de l'oeuvre, date"
+
+
+INSERTION CITATION (optionnelle, si plusieurs cycles d'œuvres)
+- Même format que page 3, autre extrait. Permet de respirer entre deux
+  blocs d'œuvres.
+
+PAGE FICHE DÉTAILLÉE — PROVENANCE / EXPOSITIONS / LITTÉRATURE
+- Une page incorporant :
+    PROVENANCE (liste verticale)
+    EXHIBITIONS (liste verticale)
+    LITERATURE (liste verticale)
+- Texte noir, fond blanc, mise en page éditoriale en colonnes si dense, nom de la gallery ou l'institution en gras.
+
+PAGE NOTE ON WORKS
+- Si une NOTE de l'expo est fournie, incorporer le texte, aligné à gauche.
+
+PAGE FINALE — L'APPARTEMENT
+- Logo L'Advisory 
+- Avec le texte "The artworks presented in this presentation are not owned by L’Appartement- Gallery & Advisoy, the gallery does not hold exclusivity over them; this selection of artworks is sourced from a third party, including private collections and other professional art entities"
+- Couleur du texte RGB #cec2ba
+- AUCUNE adresse, AUCUN contact, AUCUN réseau social.
+
+────────────────────────────────────────────────────
+VARIABLES À INJECTER
+────────────────────────────────────────────────────
+
+Oeuvre
+- art_title           ex: "Poupée Borgne"
+- accent_color               ex: #fcf9f9 (white)
+- accent_text_color          ex: #010101 (black)
+- bio_title_color            ex: #010101 (black)
+- curatorial_intro           (optionnel, paragraphe ou null)
+- cover_artwork_detail       (image)
+
+ARTISTE (un seul par fact-sheet)
+- artist.first_name
+- artist.family_name
+- artist.portrait            (image)
+- artist.bio                 (texte multi-paragraphes)
+- artist.quotes              [ { text, position_in_sequence } ]
+
+ŒUVRES (n items)
+- works[].image              (image croppée propre, cadre inclus)
+- works[].close_up_image     (image détail haute résolution)
+- works[].title
+- works[].year
+- works[].medium
+- works[].dimensions_cm      
+- works[].dimensions_in      
+- works[].code               
+- works[].price          
+- works[].provenance         [ list of strings ]
+- works[].exhibitions        [ list of strings ]
+- works[].literature         [ list of strings ]
+- works[].notes              (texte)
+- works[].real_size_cm       (pour calcul d'échelle proportionnelle)
+
+────────────────────────────────────────────────────
+ANTI-SLOP — INTERDITS STRICTS
+────────────────────────────────────────────────────
+- Pas de gradients gratuits, pas de glassmorphism, pas d'ombres portées
+  marketing.
+- Pas d'icônes, pas d'emojis.
+- Pas de cards encadrées avec border-radius pour structurer les fiches.
+- Pas de "Insights", "Discover", "Explore", aucune copy de remplissage.
+- Pas de réseaux sociaux, pas d'adresse, pas de QR code.
+- Pas de page avec mention de prix sans contexte.
+- Pas de date sur la couverture à côté du nom de l'artiste.
+- La hiérarchie passe par typo + espace + couleur, jamais par décor.
+- Pas de ligne
+
+────────────────────────────────────────────────────
+SORTIE
+────────────────────────────────────────────────────
+- Un fichier HTML self-contained, A4 paginé via @page et
+  page-break-after, prêt à exporter en PDF via Print → Save as PDF.
+- CSS embarqué dans <style>.
+- Aucune dépendance externe sauf fontes preset déjà en place dans le
+  design system L'Appartement.
+- Vérifier que l'export PDF rend chaque page sans coupure indésirable.

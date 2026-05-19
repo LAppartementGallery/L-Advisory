@@ -1,0 +1,4 @@
+Replace this single line with the artist's quote.
+
+Keep it short and punchy — the quote page renders it at 34pt, so anything
+longer than two lines starts to feel cramped.

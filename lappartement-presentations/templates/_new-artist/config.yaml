@@ -1,0 +1,49 @@
+# =============================================================================
+# L'ADVISORY PRESENTATION CONFIG — TEMPLATE
+# =============================================================================
+# Copy this whole folder (templates/_new-artist) into artists/<artist-slug>/
+# Then fill in the values below.
+# =============================================================================
+
+# --- ARTIST ------------------------------------------------------------------
+artist:
+  first_name: "FirstName"
+  family_name: "LastName"
+  portrait: "assets/artist-portrait.png"
+  bio_file: "content/biography.txt"
+  quote_file: "content/quote.txt"
+  quote_author: "FirstName LastName"   # how the signature appears under the quote
+
+# --- COVER -------------------------------------------------------------------
+cover:
+  image: "assets/cover.jpeg"
+  text_color: "#010101"   # color of the artist label on the cover (usually black)
+
+# --- ACCENT (drives the quote page) ------------------------------------------
+# Derive these from the dominant tones of the artwork. NEVER pick at random.
+accent:
+  color: "#f6f2eb"           # background of the quote page
+  text_color: "#010101"      # text/quote-marks on that background
+
+# --- WORK(S) -----------------------------------------------------------------
+# For a single-work presentation: one entry in the list.
+# For a multi-work presentation: add more entries; each one generates its own
+# work page + close-up page + provenance page + (optional) notes page.
+works:
+  - title: "Work Title"
+    year: "Conceived YYYY; executed c. YYYY"
+    medium: "Material"
+    dimensions_cm: "Height XX cm"
+    dimensions_in: "XX in"
+    price: null               # null = no price line. Otherwise "430,200 USD" etc.
+    image_main: "assets/work-main.jpeg"
+    image_closeup: "assets/work-closeup.jpeg"
+    closeup_caption_file: "content/closeup-caption.txt"
+    provenance_file: "content/provenance.txt"
+    exhibitions_file: "content/exhibitions.txt"
+    literature_file: "content/literature.txt"
+    notes_file: "content/notes-on-work.txt"
+
+# --- OUTPUT ------------------------------------------------------------------
+output:
+  filename: "firstname-lastname-work-title"   # used for both .html and .pdf
