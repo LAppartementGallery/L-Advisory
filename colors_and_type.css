@@ -36,6 +36,7 @@
   /* Base — pure values, no tints */
   --la-black:        #010101;   /* all body text, all titles */
   --la-white:        #ffffff;   /* page background */
+  --la-off-white:    #f5f1ea;   /* cover logo + lockup on dark/saturated covers */
   --la-cover-fb:     #d8d6d2;   /* fallback while cover image loads */
   --la-beige:        #cec2ba;   /* end-page logo + disclaimer text */
   --la-grey-caption: #888888;   /* exhibition-view caption only */

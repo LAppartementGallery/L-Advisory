@@ -43,6 +43,15 @@ function Work({ data, work }) {
   }
 
   // Proportional plate
+  // Compute the artwork's left edge on the page so the fiche aligns with it.
+  // The artwork is centered horizontally; its width depends on its aspect ratio.
+  // For most paintings/drawings the height/width ratio is given by real dimensions.
+  // If `aspect_ratio` is provided in config (width/height), we use it; else
+  // assume a roughly portrait aspect of 0.76 (matches 76.2 × 57.8 cm rectangle).
+  const aspectRatio = work.aspect_ratio || 0.76;
+  const artworkWidthMm = proportionalHeightMm * aspectRatio;
+  const artworkLeftMm = (210 - artworkWidthMm) / 2;
+
   return (
     <Page label="04 Work" style={{ padding: "12mm", position: "relative" }}>
       <div style={{ position: "absolute", top: "12mm", left: "12mm" }}>
@@ -51,12 +60,12 @@ function Work({ data, work }) {
       <div
         style={{
           position: "absolute",
-          top: "50%",
+          top: "40mm",
           left: "50%",
-          transform: "translate(-50%, -54%)",
+          transform: "translateX(-50%)",
           height: `${proportionalHeightMm}mm`,
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
         }}
       >
@@ -69,7 +78,7 @@ function Work({ data, work }) {
       <WorkFiche
         artist={artist} work={work} year={year}
         color="#010101"
-        style={{ position: "absolute", bottom: "18mm", right: "18mm" }}
+        style={{ position: "absolute", bottom: "22mm", left: `${artworkLeftMm}mm` }}
       />
     </Page>
   );
