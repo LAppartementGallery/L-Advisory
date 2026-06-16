@@ -1,0 +1,645 @@
+/* =============================================================================
+   ED CLARK — L'Advisory presentation styles
+   Print-first A4 portrait. Editorial; fine-art; clean.
+   ============================================================================= */
+
+@font-face {
+  font-family: 'Ivy Mode';
+  src: url('fonts/IvyMode-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* Palette */
+  --la-black:       #010101;
+  --la-white:       #ffffff;
+  --la-paper:       #fbfaf7;     /* warm cream; subtle, used for series intros */
+  --la-cover-fb:    #d8d6d2;
+  --la-beige:       #cec2ba;
+  --la-grey:        #888888;
+
+  /* Accent — derived from the artwork (Dibirdibi Country, 2010): the
+     saturated orange-vermillion field, desaturated ~20% for print. */
+  --accent-color:   #b8402b;
+  --accent-text:    #f5f1ea;
+
+  /* Type */
+  --font-display:   'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:      'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif:     'Ivy Mode', 'Times New Roman', serif;
+
+  /* Page geometry */
+  --page-w:         210mm;
+  --page-h:         297mm;
+  --margin:         16mm;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--la-black);
+  background: #d6d2cb;             /* screen viewing frame; print goes white */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ------------------------------------------------------------------ */
+/*  PAGE wrapper                                                       */
+/* ------------------------------------------------------------------ */
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 0 80px;
+}
+
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  background: var(--la-white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.08);
+}
+
+/* Page label — hidden by default (dev/screen-debug aid only).
+   Set `data-debug` on the body or .deck element to show them. */
+.page-tag { display: none; }
+[data-debug] .page-tag {
+  display: block;
+  position: absolute;
+  top: 8px; right: 12px;
+  font-size: 8pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.18);
+  z-index: 99;
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* Page number — small folio on the right margin of every page except the cover. */
+.page-number {
+  position: absolute;
+  right: 10mm;
+  bottom: 10mm;
+  font-family: var(--font-display);
+  font-size: 8pt;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--la-grey, #8a8784);
+  z-index: 20;
+}
+.page.cover .page-number,
+.page.end .page-number,
+.page.detail-zoom .page-number,
+.page.quote .page-number { display: none; }
+/* On dark / full-bleed pages the grey is invisible — use a translucent white. */
+.page.detail-zoom .page-number,
+.page.viewpage .page-number,
+.page.quote .page-number,
+.page.series-intro .page-number {
+  color: rgba(255, 255, 255, 0.7);
+  mix-blend-mode: difference;
+}
+
+/* ------------------------------------------------------------------ */
+/*  LOGOS                                                              */
+/* ------------------------------------------------------------------ */
+
+.logo-lappartement { width: 36mm; height: auto; }
+.logo-ladvisory-cover { width: 78mm; height: auto; }
+.logo-ladvisory-end { width: 110mm; height: auto; }
+
+/* ------------------------------------------------------------------ */
+/*  ARTIST LOCKUP (Inter Thin + Ivy Mode)                              */
+/* ------------------------------------------------------------------ */
+
+.lockup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.18em;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--la-black);
+}
+.lockup .first { font-family: var(--font-display); font-weight: 200; }
+.lockup .last  { font-family: var(--font-serif);   font-weight: 400; letter-spacing: 0.005em; }
+
+/* ------------------------------------------------------------------ */
+/*  COVER                                                              */
+/* ------------------------------------------------------------------ */
+
+.cover { background: var(--la-cover-fb); }
+.cover .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover .ladvisory {
+  position: absolute; top: 9mm; left: 0; right: 0;
+  display: flex; justify-content: center; z-index: 2;
+}
+.cover .lockup {
+  position: absolute;
+  bottom: 24mm; right: 18mm;
+  font-size: 42pt;
+  z-index: 2;
+}
+/* Cover skin / language-group name — small kicker above the lockup */
+.cover .skin {
+  position: absolute;
+  bottom: 41mm; right: 18mm;
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 9pt; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--la-black);
+  z-index: 2;
+  text-align: right;
+}
+.cover .subtitle {
+  position: absolute;
+  bottom: 16mm; right: 18mm;
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 9.5pt; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--la-black);
+  z-index: 2;
+}
+.cover .source {
+  position: absolute;
+  bottom: 18mm; left: 18mm;
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 8pt; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--la-black);
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------ */
+/*  BIOGRAPHY                                                          */
+/* ------------------------------------------------------------------ */
+
+.bio { padding: var(--margin); }
+
+.bio .header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 4mm;
+}
+.bio .meta {
+  text-align: right;
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 8pt; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--la-black);
+  line-height: 1.5;
+}
+
+.bio .body-wrap {
+  margin-top: 38mm;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 10pt;
+  line-height: 1.65;
+  text-align: justify;
+  color: var(--la-black);
+}
+
+.bio .portrait-wrap {
+  float: left;
+  width: 78mm;
+  margin: 4mm 8mm 4mm 0;
+  shape-outside: margin-box;
+}
+.bio .portrait-wrap img { width: 100%; height: auto; }
+.bio .portrait-caption {
+  margin-top: 2.5mm;
+  font-family: var(--font-display); font-weight: 300;
+  font-style: italic;
+  font-size: 7.5pt;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+  color: var(--la-grey);
+  text-align: left;
+}
+
+.bio .name {
+  font-size: 34pt;
+  margin-bottom: 7mm;
+  line-height: 1;
+}
+
+.bio .body p { margin-bottom: 3.2mm; }
+.bio .body p:first-child strong { font-weight: 600; }
+.bio .body p em { font-style: italic; }
+
+/* ------------------------------------------------------------------ */
+/*  QUOTE                                                              */
+/* ------------------------------------------------------------------ */
+
+.quote { background: var(--accent-color); color: var(--accent-text); }
+
+.quote .block {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  left: 34mm; right: 34mm;
+}
+.quote .open {
+  font-family: var(--font-serif);
+  font-size: 200pt; line-height: 0.55;
+  position: absolute;
+  top: -16mm; left: -26mm;
+}
+.quote .body {
+  font-family: var(--font-display);
+  font-weight: 200;
+  font-size: 30pt;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-align: justify;
+  text-align-last: left;
+}
+.quote .close {
+  font-family: var(--font-serif);
+  font-size: 200pt; line-height: 0.55;
+  position: absolute;
+  bottom: -22mm; right: -26mm;
+  transform: rotate(180deg);
+}
+.quote .sig {
+  position: absolute;
+  right: 0; bottom: -36mm;
+  display: flex; align-items: baseline; gap: 1.6mm;
+  text-transform: uppercase;
+}
+.quote .sig .dash {
+  font-family: var(--font-display); font-weight: 200;
+  font-size: 10pt; letter-spacing: 0.04em; margin-right: 2mm;
+}
+.quote .sig .first {
+  font-family: var(--font-display); font-weight: 200;
+  font-size: 10pt; letter-spacing: 0.06em;
+}
+.quote .sig .last {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: 10pt; letter-spacing: 0.01em;
+}
+
+/* ------------------------------------------------------------------ */
+/*  SERIES INTRO                                                       */
+/*  Two-column: image fills the top ~62% of the page, type column      */
+/*  beneath. Editorial calmness; no overlay typography on the image.   */
+/* ------------------------------------------------------------------ */
+
+.series-intro { padding: 0; display: flex; flex-direction: column; }
+
+.series-intro .image {
+  flex: 0 0 60%;
+  position: relative;
+  background: var(--la-cover-fb);
+  overflow: hidden;
+}
+.series-intro .image img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.series-intro .meta {
+  flex: 1 0 auto;
+  padding: 14mm var(--margin);
+  max-width: 150mm;
+}
+.series-intro .meta .title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 30pt;
+  line-height: 1.05;
+  color: var(--la-black);
+  margin-bottom: 4mm;
+}
+.series-intro .meta .years {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 9pt; letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 9mm;
+  color: var(--la-grey);
+}
+.series-intro .meta .note {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 10pt;
+  line-height: 1.65;
+  text-align: justify;
+  color: var(--la-black);
+  max-width: 150mm;
+}
+.series-intro .meta .note em { font-style: italic; }
+
+/* ------------------------------------------------------------------ */
+/*  WORK (fiche page) — artwork on white, fiche under-left              */
+/* ------------------------------------------------------------------ */
+
+.work { padding: 14mm var(--margin); position: relative; }
+
+.work .header { margin-bottom: 0; }
+
+/*  The composition wraps the image + fiche into a single block whose
+    width is dictated by the image (max-content). The fiche sits below
+    the image, flush-left to its left edge. The block is centred
+    horizontally on the page.                                          */
+
+.work .artwork-wrap {
+  position: absolute;
+  left: var(--margin);
+  right: var(--margin);
+  top: 32mm;
+  bottom: 14mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work .composition {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;     /* fiche aligns to image left edge naturally */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.work .composition .artwork {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+.work .fiche {
+  /* No absolute positioning — sits below the image, flush with its left edge. */
+  margin-top: 12mm;
+  text-align: left;
+  color: var(--la-black);
+}
+
+.work .fiche .lockup {
+  font-size: 14pt;
+}
+
+.work .fiche .info {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  margin-top: 3mm;
+  color: var(--la-black);
+}
+.work .fiche .info .title  { display: block; font-style: italic; }
+.work .fiche .info .medium { display: block; margin-top: 2.5mm; }
+.work .fiche .info .dims   { display: block; }
+.work .fiche .info .dims.framed { margin-top: 2.5mm; }
+
+.work .fiche .price {
+  margin-top: 3.5mm;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 10pt;
+  letter-spacing: -0.005em;
+  color: var(--la-black);
+}
+
+/* ------------------------------------------------------------------ */
+/*  VIEW PAGE — installation view (image + italic caption)             */
+/*  Image centered with a small margin; never full-bleed.              */
+/*  Page flips to landscape A4 if the image is horizontal.             */
+/* ------------------------------------------------------------------ */
+
+.viewpage {
+  padding: 18mm 18mm 14mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--la-white);
+}
+.viewpage .vp-composition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.viewpage.landscape {
+  width: 297mm;
+  height: 210mm;
+  page: landscape;
+}
+.viewpage .frame {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 18px;
+}
+.viewpage .frame img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.viewpage .caption {
+  flex: 0 0 auto;
+  margin-top: 8mm;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  color: var(--la-black);
+  max-width: 150mm;
+  text-align: center;
+}
+.viewpage .caption em, .viewpage .caption strong em { font-style: italic; }
+
+/* Full-bleed detail page — image fills entire page, no chrome */
+.detail-zoom { background: var(--la-white); padding: 0; }
+.detail-zoom img { display: block; }
+
+/* ------------------------------------------------------------------ */
+/*  DETAILS PAGE (Provenance / Exhibitions / Literature)               */
+/* ------------------------------------------------------------------ */
+.details { padding: 18mm var(--margin); position: relative; }
+
+.details .header {
+  display: flex; justify-content: flex-end; align-items: flex-start;
+  margin-bottom: 16mm;
+  gap: 12mm;
+}
+.details .header .lockup { font-size: 14pt; flex: 0 0 auto; }
+.details .header .meta {
+  text-align: left;
+  display: flex; flex-direction: column;
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 8pt; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--la-grey);
+  line-height: 1.6;
+}
+.details .header .meta .title { display: block; font-style: italic; text-transform: none; letter-spacing: 0.01em; font-size: 12pt; color: var(--la-black); font-weight: 400; margin-bottom: 1mm; }
+.details .header .meta .ecl { display: block; letter-spacing: 0.16em; font-size: 7.5pt; color: var(--la-grey); }
+
+.details h2 {
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 14mm 0 5mm 0;
+}
+.details h2:first-of-type { margin-top: 0; }
+
+.details .entries .entry {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  margin-bottom: 1.8mm;
+  color: var(--la-black);
+}
+.details .entries .entry strong { font-weight: 600; }
+.details .entries .entry em { font-style: italic; }
+
+.details .empty {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--la-grey);
+}
+
+/* Consolidated details page: group entries by work with a small label */
+.details .work-group {
+  margin-top: 4mm;
+}
+.details .work-group:first-of-type {
+  margin-top: 6mm;
+}
+.details .work-label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 9pt;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.4mm;
+  color: var(--la-black);
+}
+.details .work-label em { font-style: italic; }
+
+/* ------------------------------------------------------------------ */
+/*  NOTE PAGE — Legacy / note on work. Justified editorial paragraphs.  */
+/* ------------------------------------------------------------------ */
+.note { padding: 18mm var(--margin); position: relative; }
+
+.note .header {
+  display: flex; justify-content: flex-end; align-items: flex-start;
+  margin-bottom: 18mm;
+}
+.note .header .lockup { font-size: 14pt; }
+
+.note h2 {
+  font-family: var(--font-serif);
+  font-size: 22pt;
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 0 0 9mm 0;
+  max-width: 150mm;
+}
+.note .body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 10pt;
+  line-height: 1.7;
+  text-align: justify;
+  color: var(--la-black);
+  max-width: 150mm;
+}
+.note .body p { margin-bottom: 3.4mm; }
+.note .body p em { font-style: italic; }
+.note .body p strong { font-weight: 600; }
+.note .body .sub {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 15pt;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  margin: 9mm 0 3mm 0;
+}
+.note .body .sub:first-child { margin-top: 0; }
+
+/* ------------------------------------------------------------------ */
+/*  END PAGE                                                           */
+/* ------------------------------------------------------------------ */
+
+.end {
+  padding: 50mm 30mm;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+}
+.end .logo { margin-bottom: 22mm; }
+.end .footnote {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 8pt; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--la-beige);
+  margin-bottom: 8mm;
+}
+.end .disclaimer {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 8.5pt;
+  line-height: 1.65;
+  color: var(--la-beige);
+  max-width: 140mm;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------ */
+/*  PRINT                                                              */
+/* ------------------------------------------------------------------ */
+
+@page { size: A4 portrait; margin: 0; }
+
+@media print {
+  html, body { background: #fff !important; }
+  .deck { gap: 0; padding: 0; }
+  .page {
+    box-shadow: none;
+    background: #fff !important;
+    page-break-after: always;
+    break-after: page;
+    margin: 0;
+  }
+  /* Cover, quote and series-intro keep their own backgrounds — restore them. */
+  .page.cover { background: var(--la-cover-fb) !important; }
+  .page.quote { background: var(--accent-color) !important; }
+  .page.series-intro .image { background: var(--la-cover-fb) !important; }
+  /* Print all pages as A4 portrait — no orientation switching, no named-page rules.
+     Landscape-natural images simply render centered on a portrait page. */
+  .page.viewpage.landscape {
+    width: var(--page-w) !important;
+    height: var(--page-h) !important;
+    page: auto !important;
+  }
+  .page-tag { display: none; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L'Advisory — Presentation</title>
+
+  <!-- Inter (display + body). Ivy Mode (serif) est chargé par presentation.css
+       depuis fonts/IvyMode-Regular.ttf — garde le dossier fonts/ à côté. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap">
+
+  <!-- Le design system, partagé avec le pipeline Python (source unique). -->
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+  <!-- Mets data-debug sur <body> pour afficher les étiquettes de page (dev). -->
+  <div id="root"></div>
+
+  <!-- React + Babel (transpilation du JSX dans le navigateur, zéro build). -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+  <!-- Logos (optionnel) : décommente et adapte les chemins si besoin.
+  <script>
+    window.LA_LOGOS = {
+      ladvisory:      "assets/logos/ladvisory.svg",
+      ladvisoryBeige: "assets/logos/ladvisory-beige.svg",
+      lappartement:   "assets/logos/lappartement.svg",
+    };
+  </script>
+  -->
+
+  <!-- 1) Les données de la présentation. Copie data-template.js → un fichier par
+          artiste (ex. data.js), remplis-le, puis change le nom ci-dessous. -->
+  <script src="data-template.js"></script>
+
+  <!-- 2) Les composants partagés (rendent chaque page). -->
+  <script type="text/babel" src="components.jsx"></script>
+
+  <!-- 3) Rendu. -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Deck data={window.SG_DATA} />);
+  </script>
+</body>
+</html>
